@@ -1,17 +1,17 @@
 package com.messieyawo.hilttutorials.hilt
 
-import androidx.core.app.ActivityCompat
 import com.messieyawo.hilttutorials.network.*
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
 @Module
-@InstallIn(ActivityCompat::class)
+@InstallIn(ActivityComponent::class)
 abstract class NetworkModule {
-    @Binds
-    abstract fun bindNetworkAdapterImpl(networkAdapterImpl: MyAppNetworkAdapter):NetworkAdapter
+  @Binds
+   abstract fun bindNetworkAdapterImpl(networkAdapterImpl: MyAppNetworkAdapter):NetworkAdapter
 
 //    @Provides
 //   fun provideNetworkService():NetWorkService {
@@ -21,25 +21,25 @@ abstract class NetworkModule {
 //           .build()
 //   }
 
-    @CallInterceptor
-    @Provides
-    fun provideCallNetworkService():NetWorkService {
-     return NetWorkService.Builder()
-         .host("google.com")
-         .protocol("HTTPS")
-         .interceptor(CallInterceptorImpl())
-         .build()
-    }
-
-    @ResponseInterceptor
-    @Provides
-    fun provideResponseNetworkService():NetWorkService{
-        return NetWorkService.Builder()
-            .host("google.com")
-            .protocol("HTTPS")
-            .interceptor(ResponseInterceptorImpl())
-            .build()
-    }
+//    @CallInterceptor
+//    @Provides
+//    fun provideCallNetworkService():NetWorkService {
+//     return NetWorkService.Builder()
+//         .host("google.com")
+//         .protocol("HTTPS")
+//         .interceptor(CallInterceptorImpl())
+//         .build()
+//    }
+//
+//    @ResponseInterceptor
+//    @Provides
+//    fun provideResponseNetworkService():NetWorkService{
+//        return NetWorkService.Builder()
+//            .host("google.com")
+//            .protocol("HTTPS")
+//            .interceptor(ResponseInterceptorImpl())
+//            .build()
+//    }
 
 
 }
